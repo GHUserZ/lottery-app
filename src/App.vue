@@ -75,6 +75,7 @@ export default {
   width: 100%;
   height: 100%;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 .slide-left-enter,
 .slide-right-leave-active {

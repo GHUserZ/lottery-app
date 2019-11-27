@@ -24,7 +24,9 @@ Vue.use(Vant)
 Vue.use(Navigation, {router})
 Vue.use(directive)
 Vue.config.productionTip = false;
-
+import Vconsole from 'vconsole'
+let vConsole = new Vconsole()
+export default vConsole
 /* eslint-disable */
 new Vue({
   router,
