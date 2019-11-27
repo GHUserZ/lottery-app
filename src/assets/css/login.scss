@@ -1,0 +1,85 @@
+.logo{
+    display: block;
+    width:1.39rem;
+    height: 1.66rem;
+    margin: .86rem auto;
+}
+.form{
+    width:5rem;
+    margin: 0 auto;
+}
+.form-item{
+    position: relative;
+    height:.8rem;
+    line-height: .8rem;
+    border-bottom: 1px solid #E6E6E6;
+    padding-left: .6rem;
+    font-size:.32rem;
+    &::after{
+        content: '';
+        position: absolute;
+        width:1px;
+        height:.33rem;
+        background: #BCBCBC;
+        left: .48rem;
+        top:.24rem;
+    }
+    input{
+        width: 100%;
+    }
+    .icon{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+    .user.icon{
+        width:.36rem;
+        height:.38rem;
+        background:url('./image/user.png') center no-repeat;
+        background-size: .36rem .38rem;
+    }
+    .pwd.icon{
+        width:.33rem;
+        height:.40rem;
+        background:url('./image/pwd.png') center no-repeat;
+        background-size: .33rem .40rem;
+    }
+    .code.icon{
+        width:.38rem;
+        height:.34rem;
+        background:url('./image/email.png') center no-repeat;
+        background-size: .38rem .34rem;
+    }
+}
+.submit-wrapper{
+    margin: .6rem 0 .28rem;
+}
+.bottom{
+    font-size: .28rem;
+    color: #333;
+    a{
+        color:#E7141A;
+    }
+}
+.c-popup{
+    width: 80%;
+    height:3.7rem;
+    header{
+        height:.62rem;
+        line-height:.62rem;
+        background-color: #FF3D3D;
+        padding-left: .2rem;
+        color: #fff;
+    }
+    .pop-con{
+        position:relative;
+        padding: .2rem;
+        height:2.5rem;
+    }
+    .p-button-s{
+        position:absolute;
+        bottom: .2rem;
+        right:.3rem;
+    }
+}
