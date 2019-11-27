@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <component v-bind:is="current[active]"></component>
+    <component v-bind:is="current[active]" @tabbar="tabbar"></component>
     <!-- 底部导航栏 -->
     <van-tabbar v-model="active" active-color="#EA1C1F" inactive-color="#838383">
         <van-tabbar-item >
@@ -69,8 +69,11 @@ export default {
   mounted() {
 
   },
-  methods: {},
-  watch: {},
+  methods: {
+    tabbar(active){
+      this.active = active
+    }
+  }
 }
 </script>
 

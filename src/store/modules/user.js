@@ -2,12 +2,16 @@ import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
-  token: getToken()
+  token: getToken(),
+  userInfo:{}
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
+  },
+  SET_USERINFO: (state, userInfo) => {
+    state.userInfo = userInfo
   }
 }
 
@@ -17,7 +21,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         if(response.code==='0'){
-          const token = JSON.parse(response.data)['x-token']
+          const token = JSON.parse(response.data)['token']
           commit('SET_TOKEN',token)
           setToken(token)
         }
@@ -27,22 +31,12 @@ const actions = {
       })
     })
   },
-
+  // 获取用户信息
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      getInfo().then(response => {
         const { data } = response
-        if (!data) {
-          reject('Verification failed, please Login again.')
-        }
-        const { roles, name, avatar, introduction } = data
-        if (!roles || roles.length <= 0) {
-          reject('getInfo: roles must be a non-null array!')
-        }
-        commit('SET_ROLES', roles)
-        commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
-        commit('SET_INTRODUCTION', introduction)
+        commit('SET_USERINFO', data)
         resolve(data)
       }).catch(error => {
         reject(error)

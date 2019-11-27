@@ -9,11 +9,10 @@ export function login(data) {
 }
 
 // 个人中心-用户个人基本信息
-export function getInfo(token) {
+export function getInfo() {
   return request({
     url: '/api/user/action/userInfo',
-    method: 'get',
-    params: { token }
+    method: 'get'
   })
 }
 // 登出
