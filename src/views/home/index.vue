@@ -138,7 +138,12 @@ export default {
     },
     skipPage(url){
       if(url==='pay'){
-        this.$emit('tabbar',1)
+        this.$router.push({
+          path:'/',
+          query:{
+            'tab': 1
+          }
+        })
       }
     }
   },

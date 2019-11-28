@@ -1,8 +1,8 @@
 <template>
   <div class="index">
-    <component v-bind:is="current[active]" @tabbar="tabbar"></component>
+    <component v-bind:is="current[active]"></component>
     <!-- 底部导航栏 -->
-    <van-tabbar v-model="active" active-color="#EA1C1F" inactive-color="#838383">
+    <van-tabbar v-model="active" active-color="#EA1C1F" inactive-color="#838383" @change="skipPage">
         <van-tabbar-item >
           <span>首页</span>
           <img slot="icon" slot-scope="props" :src="props.active ? icon.home.active : icon.home.normal">
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-        active:storage.get('active') || 0,
+        active:Number(this.$route.query.tab) || 0,
         current: ['home', 'pay', 'buy', 'discounts','me'],
         icon: {
         home: {
@@ -71,13 +71,21 @@ export default {
 
   },
   methods: {
-    tabbar(active){
-      this.active = active
-    }
+    // tabbar(active){
+    //   this.active = active
+    // },
+    skipPage(index) {
+      this.$router.push({
+        path: '/',
+        query: {
+          tab: index
+        }
+      })
+    },
   },
   watch:{
     active(){
-      storage.set('active',this.active)
+      // storage.set('active',this.active)
     }
   }
 }
