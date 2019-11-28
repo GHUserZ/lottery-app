@@ -26,6 +26,7 @@ import discounts from '../assets/image/discounts.png'
 import discountsActive from '../assets/image/discounts-active.png'
 import me from '../assets/image/me.png'
 import meActive from '../assets/image/me-active.png'
+import storage from '../utils/storage'
 export default {
   name: '',
   components: {
@@ -37,7 +38,7 @@ export default {
   },
   data() {
     return {
-        active:0,
+        active:storage.get('active') || 0,
         current: ['home', 'pay', 'buy', 'discounts','me'],
         icon: {
         home: {
@@ -72,6 +73,11 @@ export default {
   methods: {
     tabbar(active){
       this.active = active
+    }
+  },
+  watch:{
+    active(){
+      storage.set('active',this.active)
     }
   }
 }
