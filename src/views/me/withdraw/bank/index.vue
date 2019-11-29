@@ -8,22 +8,22 @@
       :price="userInfo.balance"
     ></nav-cmp>
     <div class="lContent">
-      <van-cell :title="bankName" size="large" class="cell">
+      <van-cell :title="bankName" size="large" class="cell" @click="showBankList">
         <van-icon name="arrow" slot="right-icon" style="line-height:inherit" />
       </van-cell>
       <van-cell size="large" class="money-box">
         <div class="symbol">¥</div>
         <div class="input-inner">
-          <input type="text" placeholder="可转出到卡 32485.32" />
+          <input type="text" v-model="money" :placeholder="moneyPlace" />
         </div>
         <div class="all">全部</div>
       </van-cell>
       <div class="pay-money">
         <span>资金密码</span>
-        <input type="password" placeholder="请输入资金密码" />
+        <input type="password" v-model="password" placeholder="请输入资金密码"  @input="getInputValue"/>
       </div>
       <div class="p-button-box">
-        <van-button type="default" class="p-button p-button-c" @click="2">确认提款</van-button>
+        <van-button type="default" class="p-button p-button-c" @click="sumbit" :disabled="disabled">确认提款</van-button>
       </div>
       <div class="tips">
         <p>提现注意事项</p>
@@ -47,18 +47,25 @@
         </p>
       </div>
     </div>
-    <van-popup v-model="show" position="bottom" :style="{ height: '40%' }">
-      <van-radio-group v-model="bankData">
+    <van-popup class="bankPopup"   v-model="show" position="bottom" :style="{ height: '35%' }" closeable close-icon-position="top-left">
+      <h2 class="title">选择银行卡</h2>
+      <van-radio-group v-model="radio" @change="setBlankInfo">
         <van-cell-group>
-          <van-cell title="单选框 1" clickable @click="radio = '1'">
-            <van-radio slot="right-icon" name="1" />
+          <van-cell title="交通银行（1234）" clickable @click="radio = '交通银行（1234）'" class="cellRadio" >
+            <van-radio slot="right-icon" name="交通银行（1234）" />
           </van-cell>
-          <van-cell title="单选框 2" clickable @click="radio = '2'">
-            <van-radio slot="right-icon" name="2" />
+          <van-cell title="建设银行（1234）" clickable @click="radio = '建设银行（1234）'" class="cellRadio">
+            <van-radio slot="right-icon" name="建设银行（1234）" />
+          </van-cell>
+          <van-cell title="中国银行（1234）" clickable @click="radio = '中国银行（1234）'" class="cellRadio">
+            <van-radio slot="right-icon" name="中国银行（1234）" />
+          </van-cell>
+          <van-cell title="工商银行（1234）" clickable @click="radio = '工商银行（1234）'" class="cellRadio">
+            <van-radio slot="right-icon" name="工商银行（1234）" />
           </van-cell>
         </van-cell-group>
+        <van-cell title="添加银行卡+" is-link />
       </van-radio-group>
-      <van-cell title="添加银行卡+" is-link />
     </van-popup>
   </div>
 </template>
@@ -66,28 +73,71 @@
 <script>
 import navCmp from "../../../../components/nav";
 import { mapGetters } from "vuex";
-import { addAddress } from "@/api/user";
+import { getBankCardList } from "@/api/user";
 let timeOutEvent = null;
 export default {
   name: "bank",
   components: { navCmp },
   data() {
     return {
-      address: "",
-      remark: "",
-      bankName: "交通银行 (1234)",
-      show: true,
-      bankData:''
+      password: "",
+      money: "",
+      moneyPlace:'可转出到卡 32485.30',
+      bankName: "交通银行（1234）",
+      show: false,
+      radio: "交通银行（1234）",
+      disabled:true,
+      pageNo:1,
+      pageSize:100,
+      list: [
+        {
+          bankId: 0,
+          bankName: 0,
+          branchBankId: 0,
+          branchBankName: 0,
+          cardNo: "string",
+          created: "2019-11-29T02:15:56.490Z",
+          id: 0,
+          modified: "2019-11-29T02:15:56.490Z",
+          name: "string",
+          userId: 0
+        }
+      ]
     };
   },
   computed: {
     ...mapGetters(["userInfo"])
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.getBankCardList();
+  },
   methods: {
     back() {
       this.$router.go(-1);
+    },
+    async getBankCardList() {
+      let params = {
+        pageNo:this.pageNo,
+        pageSize:this.pageSize
+      }
+      await getBankCardList(params).then(res => {
+        console.log(res);
+      });
+    },
+    getInputValue(){
+     this.password!=='' ? this.disabled = false : this.disabled =true
+    },
+    showBankList(){
+      this.show = true
+    },
+    // 确认提现
+    sumbit(){
+      this.$toast('点击了确认提款')
+    },
+    setBlankInfo(name){
+      this.bankName = name
+      this.show = false
     }
   },
   watch: {}
@@ -123,10 +173,16 @@ export default {
 }
 .input-inner {
   width: 78%;
+  input{
+    width:100%;
+    height: 100%;
+  }
 }
 .all {
   width: 10%;
   text-align: center;
+  font-size: .3rem;
+  color:#FD8727FF;
 }
 .p-button-box {
   padding: 0.3rem;
@@ -158,4 +214,28 @@ export default {
   color: #808080ff;
   line-height: 0.4rem;
 }
+.bankPopup{
+  .title{
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .24rem;
+    color: #333;
+    text-align: center;
+  }
+}
+</style>
+<style scoped>
+  .cellRadio >>> .van-radio__icon .van-icon{
+    border: none;
+  }
+  .cellRadio >>> .van-radio__icon--checked .van-icon{
+    background: #08c558;
+  }
+  .page >>> .van-cell:not(:last-child)::after{
+    left: 0
+  }
+  .page >>> .van-popup__close-icon--top-left{
+    top: .14rem;
+    color: #333;
+  }
 </style>

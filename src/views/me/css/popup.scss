@@ -1,0 +1,76 @@
+.c-popup-2 {
+    width: 80%;
+    .from-wrapper{
+        width: 100%;
+    }
+    header {
+        height: 0.62rem;
+        line-height: 0.62rem;
+        background-color: #ff3d3d;
+        padding-left: 0.2rem;
+        color: #fff;
+        text-align: center;
+    }
+    .pop-con {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        padding: 0.2rem;
+        font-size: 0.25rem;
+        color: #595959;
+        text-align: center;
+        padding-bottom: 1.2rem;
+    }
+    .button-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        bottom: 0.3rem;
+    }
+    .p-button-d,
+    .p-button-s {
+        width: 45%;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        margin: 0 0.2rem;
+    }
+    .input-inner {
+        width: 100%;
+        margin-bottom: 0.22rem;
+        &:first-child{
+            margin-top: .2rem;
+        }
+        input {
+            width: 100%;
+            height: 0.6rem;
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(224, 224, 224, 1);
+            border-radius: 0;
+            text-indent: 0.2rem;
+        }
+    }
+}
+.c-popup{
+    width: 80%;
+    height:3.7rem;
+    header{
+        height:.62rem;
+        line-height:.62rem;
+        background-color: #FF3D3D;
+        padding-left: .2rem;
+        color: #fff;
+    }
+    .pop-con{
+        position:relative;
+        padding: .2rem;
+        height:2.5rem;
+        color: #595959FF;
+    }
+    .p-button-s{
+        position:absolute;
+        bottom: .2rem;
+        right:.3rem;
+    }
+}

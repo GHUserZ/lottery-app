@@ -56,6 +56,9 @@ export default {
         case 1:
           this.$router.push({ path:'/meWithdraw'})
           break;
+        case 2:
+          this.$router.push({ path:'/meSafe'})
+          break;
       }
     },
     settingSkip(){

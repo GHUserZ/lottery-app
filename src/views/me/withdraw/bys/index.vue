@@ -42,7 +42,7 @@
           </div>
           <div class="input-inner">
             <input
-              v-model="num"
+              v-model="amount"
               type="text"
               placeholder="最低提币10个"
               @input="getInputValue"
@@ -94,14 +94,16 @@
 
 <script>
 import navCmp from "../../../../components/nav";
+import {mapGetters} from 'vuex'
+import {BysDraw} from '@/api/pay'
 export default {
   name: "bys提现",
   components: { navCmp },
   data() {
     return {
-      address: "",
+      address:this.$route.query.address ||  "",
       remark: "",
-      num: "",
+      amount: "",
       show: false,
       message: "您未设置资金密码，请前往设置",
       isPwd: true,
@@ -109,8 +111,15 @@ export default {
       disabled: true
     };
   },
+  computed:{
+    ...mapGetters([
+      'userInfo'
+    ])
+  },
   created() {},
-  mounted() {},
+  mounted() {
+    console.log('userInfo')
+  },
   methods: {
     back() {
       this.$router.go(-1);
@@ -130,6 +139,17 @@ export default {
       } else {
         this.disabled = true;
       }
+    },
+    async BysDraw(){
+      let params = {
+        address:this.address,
+        amount:this.amount
+      }
+      await BysDraw(params).then((res) =>{
+        console.log(res)
+      }).catch((err) => {
+        console.log(err.message)
+      })
     }
   },
   watch: {}

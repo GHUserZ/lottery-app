@@ -175,7 +175,6 @@ export default {
 }
 .top-line {
   display: flex;
-  height: 1.42rem;
   .left {
     width: 1.57rem;
     font-size: 0.36rem;

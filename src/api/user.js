@@ -56,3 +56,35 @@ export function addAddress(data) {
   })
 }
 
+// 获取用户银行卡
+export function getBankCard() {
+  return request({
+    url: '/api/user/bankcard/get',
+    method: 'get'
+  })
+}
+// 获取用户银行卡列表
+export function getBankCardList(params) {
+  return request({
+    url: '/api/user/bankcard/list',
+    method: 'get',
+    params
+  })
+}
+// 保存用户银行卡
+export function addBankCard(data) {
+  return request({
+    url: '/api/user/bankcard/save',
+    method: 'POST',
+    data
+  })
+}
+
+// 信息安全修改密码
+export function updatePassword(data) {
+  return request({
+    url: '/api/user/action/updatePassword',
+    method: 'POST',
+    data
+  })
+}

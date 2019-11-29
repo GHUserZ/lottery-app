@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken ,removeToken} from '@/utils/auth'
 import { Dialog } from 'vant'
 import router from "@/router"
 // create an axios instance
@@ -39,6 +39,13 @@ service.interceptors.response.use(
       if ((res.code === undefined && res.retCode === undefined) || (res.code !== undefined && !parseInt(res.code)) || (res.retCode !== undefined && !parseInt(res.retCode))) { // res.code没有值并且retCode没有值 或者值为0
         // const result = res.data ? res.data : res
         return Promise.resolve(res)
+      }
+      if([50134].indexOf(res.code) > -1){
+        let curRoute = router.currentRoute.path
+        if(curRoute!=='/login'){
+          removeToken('x-token')
+          router.push({path:`/login?redirect=${curRoute}`})
+        }
       }
       return Promise.reject(res)
     },

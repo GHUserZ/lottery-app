@@ -95,6 +95,10 @@ to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
     font-size: .32rem;
     line-height: 1.4;
 }
+.p-button:disabled{
+    opacity: 1;
+    background: #ccc
+}
 .p-button-c{
     background: linear-gradient(
         90deg,
@@ -107,7 +111,7 @@ to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
     height:.62rem;
     line-height:.62rem;
     padding: 0 .42rem;
-    background:#FF3D3D;
+    background:#FF3D3D !important;
     color: #fff;
     font-size: .24rem;
 }

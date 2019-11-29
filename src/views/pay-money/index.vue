@@ -5,13 +5,23 @@
       <div class="pay-wrapper">
         <div class="pay-money">
           <span>充值金额</span>
-          <input v-model="money" type="text" placeholder="请输入充值金额">
+          <input v-model="money" type="text" placeholder="请输入充值金额" @input="getInputValue" />
           <p class="tips">充值范围100-5000元</p>
         </div>
         <div class="money-wrapper">
-          <div :class="money===item.id ? 'active':''" v-for="item in payMoney" :key="item.id" @click="selectMoney(item.id)">{{item.money}}元</div>
+          <div
+            :class="money===item.id ? 'active':''"
+            v-for="item in payMoney"
+            :key="item.id"
+            @click="selectMoney(item.id)"
+          >{{item.money}}元</div>
         </div>
-        <van-button type="default" class="p-button p-button-c">确认充值</van-button>
+        <van-button
+          type="default"
+          class="p-button p-button-c"
+          @click="submit"
+          :disabled="disabled"
+        >确认充值</van-button>
       </div>
       <footer>
         <p>充值须知:</p>
@@ -28,97 +38,116 @@
 
 <script>
 import navCom from "../../components/nav";
+import { RMBRecharge } from "@/api/pay";
 export default {
   name: "money",
   components: { navCom },
   data() {
     return {
-      money:'',
-      payMoney:[{money:100,id:100},{money:300,id:300},{money:500,id:500},{money:1000,id:1000},{money:2000,id:2000},{money:5000,id:5000}]
+      disabled: true,
+      money: "",
+      payMoney: [
+        { money: 100, id: 100 },
+        { money: 300, id: 300 },
+        { money: 500, id: 500 },
+        { money: 1000, id: 1000 },
+        { money: 2000, id: 2000 },
+        { money: 5000, id: 5000 }
+      ]
     };
   },
   created() {},
-  mounted() {
-  },
+  mounted() {},
   methods: {
     back() {
       this.$router.go(-1);
     },
-    selectMoney(money){
-      this.money = money
+    selectMoney(money) {
+      this.money = money;
+    },
+    async RMBRecharge() {
+      await RMBRecharge({ amount: this.money }).then(res => {
+        window.location.href = res.data.replace(/\"/g,"");
+      });
+    },
+    getInputValue() {
+      this.money !== "" ? (this.disabled = false) : (this.disabled = true);
+    },
+    submit() {
+      this.RMBRecharge();
     }
   },
   watch: {
-    money(){
-      console.log(this.money)
+    money() {
+      this.getInputValue();
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/css/reset.css';
+@import "../../assets/css/reset.css";
 .page {
   background-color: #f0f1f6;
 }
-.lContent{
-  padding-left: .3rem;
-  padding-right: .3rem;
+.lContent {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
 }
 .p-button {
-  font-size: .3rem;
-  margin-bottom: .4rem;
+  font-size: 0.3rem;
+  margin-bottom: 0.4rem;
 }
-.pay-money{
+.pay-money {
   position: relative;
   display: flex;
-  height:1.24rem;
-  padding-top: .39rem;
-  span{
+  height: 1.24rem;
+  padding-top: 0.39rem;
+  span {
     display: block;
-    width:20%;
-    font-size: .3rem;
+    width: 20%;
+    font-size: 0.3rem;
     color: #333333;
-    padding-top: .1rem;
+    padding-top: 0.1rem;
   }
-  input{
-    width:80%;
-    height:.66rem;
-    text-indent: .25rem;
-    background:rgba(255,255,255,1);
-    border:1px solid rgba(204, 204, 204, 1);
-    font-size: .3rem;
+  input {
+    width: 80%;
+    height: 0.66rem;
+    text-indent: 0.25rem;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(204, 204, 204, 1);
+    font-size: 0.3rem;
     color: #333;
   }
-  .tips{
+  .tips {
     position: absolute;
-    bottom: .12rem;
+    bottom: 0.12rem;
     left: 20%;
-    font-size: .24rem;
-    color: #EB3828;
+    font-size: 0.24rem;
+    color: #eb3828;
   }
 }
-.money-wrapper{
+.money-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-between;
-  margin-top: .4rem;
-  div{
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: .4rem;
-    width:2rem;
-    height:1.33rem;
-    background:rgba(255,255,255,1);
-    border:1px solid rgba(204, 204, 204, 1);
-    border-radius:.1rem;
-    font-size: .38rem;
+    margin-bottom: 0.4rem;
+    width: 2rem;
+    height: 1.33rem;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(204, 204, 204, 1);
+    border-radius: 0.1rem;
+    font-size: 0.38rem;
     color: #666;
   }
-  div.active{
+  div.active {
     background-color: #fd8727;
-    color:#fff;
+    color: #fff;
     border-color: #fd8727;
   }
 }
@@ -127,6 +156,6 @@ footer {
   margin: auto;
   font-size: 0.24rem;
   color: #808080;
-  line-height: .4rem;
+  line-height: 0.4rem;
 }
 </style>

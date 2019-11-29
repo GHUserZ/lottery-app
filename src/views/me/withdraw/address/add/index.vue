@@ -4,14 +4,14 @@
     <div class="lContent">
       <div class="from-wrap">
         <div class="input-inner">
-          <input v-model="address" type="text" placeholder="输入或粘贴BYS地址" />
+          <input v-model="address" type="text" placeholder="输入或粘贴BYS地址" @input="getInputValue"/>
         </div>
         <div class="input-inner">
-          <input v-model="remark" type="text" placeholder="请输入备注信息" maxlength="50"/>
+          <input v-model="remark" type="text" placeholder="请输入备注信息" maxlength="50" @input="getInputValue"/>
         </div>
       </div>
       <div class="p-button-box">
-        <van-button type="default" class="p-button p-button-c" @click="addAddress">确定</van-button>
+        <van-button type="default" class="p-button p-button-c" @click="addAddress" :disabled="disabled">确定</van-button>
       </div>
     </div>
   </div>
@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       address: "",
-      remark: ""
+      remark: "",
+      disabled:true
     };
   },
   created() {},
@@ -50,7 +51,16 @@ export default {
             this.back()
           },2000)
         }
+      }).catch((err) => {
+        this.$toast(err.message)
       });
+    },
+    getInputValue() {
+      if (this.address !== "" && this.remark !== "") {
+        this.disabled = false;
+      } else {
+        this.disabled = true;
+      }
     }
   },
   watch: {}

@@ -72,8 +72,32 @@ const routes = [
   {
     path: "/meAddAddress",
     name: "meAddAddress",
-    component: () => import ('@/views/me/withdraw/address/addAddress/index'),
+    component: () => import ('@/views/me/withdraw/address/add/index'),
     meta: { title: 'BYS地址管理' }
+  },
+  {
+    path: "/meSafe",
+    name: "meSafe",
+    component: () => import ('@/views/me/safe/index'),
+    meta: { title: '信息安全' }
+  },
+  {
+    path: "/bankCard",
+    name: "bankCard",
+    component: () => import ('@/views/me/bankCard/index'),
+    meta: { title: '银行卡' }
+  },
+  {
+    path: "/loginHistory",
+    name: "loginHistory",
+    component: () => import ('@/views/me/loginHistory/index'),
+    meta: { title: '登录历史' }
+  },
+  {
+    path: "/addBankCard",
+    name: "addBankCard",
+    component: () => import ('@/views/me/bankCard/add/index'),
+    meta: { title: '添加银行卡' }
   },
   {
     path: "/register",

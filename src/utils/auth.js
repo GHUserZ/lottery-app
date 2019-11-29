@@ -7,7 +7,7 @@ export function getToken() {
 }
 
 export function setToken(token) {
-  return storage.save(TokenKey, token,10800000)
+  return storage.save(TokenKey, token,86400000)
 }
 
 export function removeToken() {
