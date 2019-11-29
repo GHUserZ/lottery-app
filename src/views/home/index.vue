@@ -93,7 +93,7 @@ export default {
       navData: [
         { src: payImg, txt: "立即充值", url: "pay" },
         { src: withdrawImg, txt: "快速提现" },
-        { src: gameImg, txt: "快速游戏" },
+        { src: gameImg, txt: "快速游戏" ,url:'game'},
         { src: serviceImg, txt: "联系客服" }
       ],
       hotLImg: [
@@ -137,13 +137,13 @@ export default {
       });
     },
     skipPage(url){
-      if(url==='pay'){
-        this.$router.push({
-          path:'/',
-          query:{
-            'tab': 1
-          }
-        })
+      switch(url){
+        case 'pay':
+          this.$router.push({path:'/',query:{ 'tab': 1 }})
+          break
+        case 'game':
+          this.$router.push({path:'/',query:{ 'tab': 2 }})
+          break
       }
     }
   },

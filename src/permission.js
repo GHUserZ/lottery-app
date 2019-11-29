@@ -1,6 +1,6 @@
 import router from '@/router'
 import store from './store'
-import { getToken,removeToken } from '@/utils/auth' // get token from cookie
+import { getToken } from '@/utils/auth' // get token from cookie
 router.beforeEach(async(to, from, next) => {
     const hasToken = getToken()
     if(hasToken){

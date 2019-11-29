@@ -11,7 +11,7 @@
         <div class="money-wrapper">
           <div :class="money===item.id ? 'active':''" v-for="item in payMoney" :key="item.id" @click="selectMoney(item.id)">{{item.money}}元</div>
         </div>
-        <van-button type="default" class="p-button">确认充值</van-button>
+        <van-button type="default" class="p-button p-button-c">确认充值</van-button>
       </div>
       <footer>
         <p>充值须知:</p>
@@ -57,6 +57,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/css/reset.css';
 .page {
   background-color: #f0f1f6;
 }
@@ -65,12 +66,7 @@ export default {
   padding-right: .3rem;
 }
 .p-button {
-  background: linear-gradient(
-    90deg,
-    rgba(233, 26, 30, 1),
-    rgba(254, 80, 63, 1)
-  );
-  border-radius: 0.1rem;
+  font-size: .3rem;
   margin-bottom: .4rem;
 }
 .pay-money{

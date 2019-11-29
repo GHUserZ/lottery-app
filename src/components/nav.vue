@@ -2,12 +2,13 @@
     <van-nav-bar :title="title" :left-arrow="leftArrow" @click-left="onClickLeft" fixed @click-right="onClickRight">
       <img v-if="icon" class="rightIcon" :src="icon" slot="right" />
       <div v-if="price" class="price" slot="right">余额：{{price}}</div>
+      <div v-if="address" class="address" slot="right">地址管理</div>
     </van-nav-bar>
 </template>
 
 <script>
 export default {
-  props:['title','icon','leftArrow','price'],
+  props:['title','icon','leftArrow','price','address'],
   name: '',
   components: {},
   data() {
@@ -43,8 +44,11 @@ export default {
     height:.29rem;
     margin-top:.3rem;
 }
-.price{
+.price,.address{
   font-size: .2rem;
   color: #333
+}
+.address{
+  font-size: .3rem;
 }
 </style>

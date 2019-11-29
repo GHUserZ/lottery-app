@@ -31,3 +31,28 @@ export function userRegister(data) {
   })
 }
 
+// 用户提币地址列表
+export function getAddressList(data) {
+  return request({
+    url: '/api/userAddress/action/getAddressList',
+    method: 'POST',
+    data
+  })
+}
+// 删除提币地址
+export function delAddress(data) {
+  return request({
+    url: '/api/userAddress/action/delAddress',
+    method: 'POST',
+    data
+  })
+}
+// 添加提币地址
+export function addAddress(data) {
+  return request({
+    url: '/api/userAddress/action/addAddress',
+    method: 'POST',
+    data
+  })
+}
+

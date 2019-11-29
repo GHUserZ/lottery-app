@@ -1,4 +1,5 @@
-import storage from '@/utils/storage'
+// import storage from '@/utils/storage'
+import storage from 'sweet-storage'
 const TokenKey = 'x-token'
 
 export function getToken() {
@@ -6,7 +7,7 @@ export function getToken() {
 }
 
 export function setToken(token) {
-  return storage.set(TokenKey, token)
+  return storage.save(TokenKey, token,10800000)
 }
 
 export function removeToken() {

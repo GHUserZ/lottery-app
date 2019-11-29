@@ -1,8 +1,8 @@
 import axios from 'axios'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
-import { Dialog, Notify } from 'vant'
-import router from '@/router'
+import { Dialog } from 'vant'
+import router from "@/router"
 // create an axios instance
 const service = axios.create({
   baseURL:process.env.VUE_APP_API, // url = base url + request url
@@ -40,24 +40,6 @@ service.interceptors.response.use(
         // const result = res.data ? res.data : res
         return Promise.resolve(res)
       }
-      // 失败(1. http状态码为200 2.res的code非2000)
-      // if ([508, 512, 514].indexOf(res.code) > -1) { // 登出
-      //   try {
-      //     store.dispatch('ClearLogin') // 清空登录信息
-      //     Dialog.alert({
-      //       title: '登录过期',
-      //       message: '当前登录以超时，请重新登录!!!'
-      //     }).then(() => {
-      //       router.push({ path: '/login' })
-      //     })
-      //   } catch (error) {
-      //     console.warn(error)
-      //   }
-      // } else { // 请求接口失败
-      //   // const errMsg = res.msg ? res.msg : '获取接口信息失败'
-      //   // Notify(errMsg) // 显示错误信息
-      //   return Promise.resolve(res)
-      // }
       return Promise.reject(res)
     },
     // 失败 http状态码非200

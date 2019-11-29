@@ -74,15 +74,11 @@ export default {
       let loginForm = { username: this.username, password: this.password }
        this.$store.dispatch('user/login', loginForm)
         .then((res) => {
-          if(res.code!=='0'){
-            this.errorMsg = res.message
-            this.show= true
-          }else{
-            this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-          }
+          this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
         })
         .catch((err) => {
-          console.log(err)
+          this.errorMsg = err.message
+          this.show= true
         })
     },
     getOtherQuery(query) {
