@@ -81,6 +81,7 @@ export default {
       switch (i) {
         case 0:
           this.show = true;
+          this.index = 0
           break;
         case 1:
             this.index = 1

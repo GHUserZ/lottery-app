@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import navCom from "../../components/nav";
+import navCom from "../../../components/nav";
 import { RMBRecharge } from "@/api/pay";
 export default {
   name: "money",
@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/css/reset.css";
+@import "../../../assets/css/reset.css";
 .page {
   background-color: #f0f1f6;
 }

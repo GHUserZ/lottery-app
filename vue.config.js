@@ -21,6 +21,16 @@ module.exports = {
         https: false,
         hotOnly: false,
         // proxy: {}, // 跨域代理
+        proxy: {
+            '/api': {
+            target: 'https://shhp.f3322.net:6010',
+            ws: true,
+            changeOrigin: true,
+            pathRewrite:{
+                '^/api':''
+            }
+        }
+      }
     },
     parallel: require('os').cpus().length > 1, // 该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建
     pwa: {}, // PWA 插件相关配置   see => https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa

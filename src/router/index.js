@@ -18,13 +18,13 @@ const routes = [
   {
     path: "/payBys",
     name: "payBys",
-    component: () => import ('@/views/pay-bys/index'),
+    component: () => import ('@/views/pay/pay-bys/index'),
     meta: { title: 'BYS充值' }
   },
   {
     path: "/payMoney",
     name: "payMoney",
-    component: () => import ('@/views/pay-money/index'),
+    component: () => import ('@/views/pay/pay-money/index'),
     meta: { title: '人民币充值' }
   },
   {
@@ -98,6 +98,36 @@ const routes = [
     name: "addBankCard",
     component: () => import ('@/views/me/bankCard/add/index'),
     meta: { title: '添加银行卡' }
+  },
+  {
+    path: "/agency",
+    name: "agency",
+    component: () => import ('@/views/agency/index'),
+    meta: { title: '代理中心' }
+  },
+  {
+    path: "/agencyRegister",
+    name: "agencyRegister",
+    component: () => import ('@/views/agency/register/index'),
+    meta: { title: '代理注册账号' }
+  },
+  {
+    path: "/agencyTeam",
+    name: "agencyTeam",
+    component: () => import ('@/views/agency/team/index'),
+    meta: { title: '团队管理' }
+  },
+  {
+    path: "/teamBill",
+    name: "teamBill",
+    component: () => import ('@/views/agency/team/subpage/bill'),
+    meta: { title: '账变明细' }
+  },
+  {
+    path: "/agencyPromote",
+    name: "agencyPromote",
+    component: () => import ('@/views/agency/promote/index'),
+    meta: { title: '代理推广' }
   },
   {
     path: "/register",

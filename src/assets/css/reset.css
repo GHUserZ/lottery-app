@@ -3,9 +3,6 @@
 /*ios，如果不行可以加一个透明遮罩层*/
 -webkit-touch-callout:none;
 touch-callout:none;
-/*安卓*/
--webkit-user-select: none;
-user-select: none;
 }
 blockquote,body,button,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,pre,span,table,td,textarea,th,ul{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue", Helvetica, STHeiTi, sans-serif;margin:0;padding:0}
 address, cite, em, i { font-style: normal; }
@@ -14,7 +11,7 @@ html,body{height:100%;font-size:14px;}
 ul,li { list-style: none; }
 a {  text-decoration: none; outline: none;}
 img{ vertical-align: top; border: 0;  }
-textarea,input {  -webkit-appearance: none;outline:none;border:none;}
+textarea,input,select {  -webkit-appearance: none;outline:none;border:none;}
 table {border-collapse: collapse;border-spacing: 0;}
 td,th {padding: 0;}
 .clearfix:after{ display: block;content: ''; clear: both;}

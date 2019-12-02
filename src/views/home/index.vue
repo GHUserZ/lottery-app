@@ -129,11 +129,15 @@ export default {
         this.hotData = res.data;
       }).then(() => {
         this.loading = false
+      }).catch((err) => {
+        console.log(err)
       });
     },
     async winnerList() {
       winnerList().then(res => {
         this.winnerData = res.data;
+      }).catch((err) => {
+        console.log(err)
       });
     },
     skipPage(url){

@@ -59,6 +59,9 @@ export default {
         case 2:
           this.$router.push({ path:'/meSafe'})
           break;
+        case 3:
+          this.$router.push({ path:'/agency'})
+          break;
       }
     },
     settingSkip(){
