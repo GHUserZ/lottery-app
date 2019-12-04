@@ -88,3 +88,21 @@ export function updatePassword(data) {
     data
   })
 }
+//个人中心-个人统计
+export function userStatistical(data) {
+  return request({
+    url: '/api/user/action/userStatistical',
+    method: 'POST',
+    data
+  })
+}
+
+//个人中心-个人盈亏
+export function userGainOrLoss(data) {
+  return request({
+    url: '/api/user/action/userGainOrLoss',
+    method: 'POST',
+    data
+  })
+}
+

@@ -38,9 +38,9 @@ export default {
     Vue.filter('money', function (value) {
       let val = Number(value)
       if (isNaN(val) || value === null || value === '') {
-        return 0.00
+        return 0
       } else {
-        return Number(val.toFixed(2))
+        return Number(val)
       }
     })
 
@@ -66,16 +66,19 @@ export default {
     })
 
     Vue.filter('formatVolume', function (value) {
-      if (value >= 100000000 || value <= -10000000) {
-        value = (value / 100000000).toFixed(8)
-        value = value.substring(0, value.lastIndexOf('.') + 3) + '亿'
-      } else if (value >= 10000 && value < 100000000) {
-        value = (value / 10000).toFixed(5)
-        value = value.substring(0, value.lastIndexOf('.') + 3) + '万'
-      } else {
-        value = value.toFixed(2)
+      value =Number(value)
+      if(!isNaN(value)){
+        if (value >= 100000000 || value <= -10000000) {
+          value = (value / 100000000).toFixed(8)
+          value = value.substring(0, value.lastIndexOf('.') + 3) + '亿'
+        } else if (value >= 10000 && value < 100000000) {
+          value = (value / 10000).toFixed(5)
+          value = value.substring(0, value.lastIndexOf('.') + 3) + '万'
+        } else {
+          value = value + '元'
+        }
+        return value
       }
-      return value
     })
 
     Vue.filter('timestamp', function (value) {

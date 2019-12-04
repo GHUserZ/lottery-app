@@ -130,6 +130,60 @@ const routes = [
     meta: { title: '代理推广' }
   },
   {
+    path: "/agencyStat",
+    name: "agencyStat",
+    component: () => import ('@/views/agency/stat/index'),
+    meta: { title: '统计分析' }
+  },
+  {
+    path: "/agencyReport",
+    name: "agencyReport",
+    component: () => import ('@/views/agency/report/index'),
+    meta: { title: '盈亏报表' }
+  },
+  {
+    path: "/agencyGame",
+    name: "agencyGame",
+    component: () => import ('@/views/agency/game/index'),
+    meta: { title: '游戏记录' }
+  },
+  {
+    path: "/iReport",
+    name: "iReport",
+    component: () => import ('@/views/iReport/index'),
+    meta: { title: '个人报表' }
+  },
+  {
+    path: "/iReportBill",
+    name: "iReportBill",
+    component: () => import ('@/views/iReport/subpage/bill'),
+    meta: { title: '账变明细' }
+  },
+  {
+    path: "/iReportGame",
+    name: "iReportGame",
+    component: () => import ('@/views/iReport/subpage/game'),
+    meta: { title: '游戏记录' }
+  },
+  {
+    path: "/financial",
+    name: "financial",
+    component: () => import ('@/views/financial/index'),
+    meta: { title: '资金明细' }
+  },
+  {
+    path: "/financialDetails",
+    name: "financialDetails",
+    component: () => import ('@/views/financial/subpage/details'),
+    meta: { title: '资金明细详情' }
+  },
+  {
+    path: "/system",
+    name: "system",
+    component: () => import ('@/views/system/index'),
+    meta: { title: '系统公告' }
+  },
+  {
     path: "/register",
     name: "register",
     component: () => import ('@/views/register/index'),

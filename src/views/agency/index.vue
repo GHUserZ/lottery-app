@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="panel">
-        <h2 class="p-t">我的收益<a class="more" href="javascript:;">团队帐变明细></a></h2>
+        <h2 class="p-t">我的收益<a class="more" href="javascript:;" @click="skipTeamBill">团队帐变明细></a></h2>
         <div class="d-flex">
           <div>邀请人数 <p class="num">100</p></div>
           <div>返佣金额 <p class="num">￥100.12</p></div>
@@ -69,12 +69,18 @@ export default {
           this.$router.push({name:'agencyTeam'})
           break
         case 1:
+          this.$router.push({name:'agencyStat'})
           break
         case 2:
+          this.$router.push({name:'agencyReport'})
           break
         case 3:
+          this.$router.push({name:'agencyGame'})
           break
       }
+    },
+    skipTeamBill(){
+      this.$router.push({name:'teamBill'})
     }
   },
   watch: {}

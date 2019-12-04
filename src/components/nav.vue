@@ -2,14 +2,13 @@
     <van-nav-bar :title="title" :left-arrow="leftArrow" @click-left="onClickLeft" fixed @click-right="onClickRight">
       <img v-if="icon" class="rightIcon" :src="icon" slot="right" />
       <div v-if="price" class="price" slot="right">余额：{{price}}</div>
-      <div v-if="address" class="address" slot="right">地址管理</div>
       <div v-if="txt" class="address" slot="right">{{txt}}</div>
     </van-nav-bar>
 </template>
 
 <script>
 export default {
-  props:['title','icon','leftArrow','price','address','txt'],
+  props:['title','icon','leftArrow','price','txt'],
   name: '',
   components: {},
   data() {

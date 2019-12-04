@@ -9,21 +9,33 @@ export function registerByAgent(data) {
     data
   })
 }
-// 人民币充值
-export function RMBRecharge(params) {
-  return request({
-    url: '/api/user/cash/draw/trance',
-    method: 'get',
-    params
-  })
-}
 
-// BYS提现
-export function BysDraw(data) {
+// 代理中心-团队统计分析
+export function agentStatistical(data) {
   return request({
-    url: '/api/user/deposit/bys/draw',
+    url: '/api/user/agent/action/agentStatistical',
     method: 'post',
     data
   })
 }
+
+
+// 代理中心-团队盈亏报表
+export function getTeamProfitAndLossRecords(data) {
+  return request({
+    url: '/api/user/agent/action/getTeamProfitAndLossRecords',
+    method: 'post',
+    data
+  })
+}
+
+// 代理中心-团队游戏记录
+export function getTeamOrderRecords(data) {
+  return request({
+    url: '/api/user/agent/action/getTeamOrderRecords',
+    method: 'post',
+    data
+  })
+}
+
 

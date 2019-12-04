@@ -4,7 +4,7 @@
       :title="'提现'"
       :leftArrow="true"
       :fixed="true"
-      :address="true"
+      :txt="'地址管理'"
       @onClickLeft="back"
       @onClickRight="onClickRight"
     ></nav-cmp>

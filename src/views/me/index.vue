@@ -62,6 +62,15 @@ export default {
         case 3:
           this.$router.push({ path:'/agency'})
           break;
+        case 4:
+          this.$router.push({ path:'/iReport'})
+          break;
+        case 5:
+          this.$router.push({ path:'/financial'})
+          break;
+        case 6:
+          this.$router.push({ path:'/system'})
+          break;
       }
     },
     settingSkip(){

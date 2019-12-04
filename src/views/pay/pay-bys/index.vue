@@ -36,12 +36,13 @@ export default {
   components: { navCom, QRCode },
   data() {
     return {
-      link: ""
+      link: "000000000000000000000"
     };
   },
   created() {},
   mounted() {
     this.bysPayAddress();
+    this.qrcode()
   },
   methods: {
     back() {
@@ -64,6 +65,7 @@ export default {
       await bysPayAddress().then(res => {
         this.link = res.data.replace(/\"/g,'')
       }).then(() => {
+        document.getElementById('qrcode').innerHTML=''
         this.qrcode();
       });
     }
