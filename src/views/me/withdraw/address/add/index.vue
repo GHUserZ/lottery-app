@@ -48,7 +48,7 @@ export default {
           this.$toast('添加成功')
           setTimeout(() => {
             this.$toast.clear()
-            this.back()
+            this.$router.push({name:'meWithdrawAddress'})
           },2000)
         }
       }).catch((err) => {

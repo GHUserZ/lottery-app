@@ -51,7 +51,7 @@
     <van-popup class="c-popup" v-model="showInfo" :close-on-click-overlay="false" closeable>
       <header>持卡人说明</header>
       <div class="pop-con">
-        <p >确认为了保证账户资金安全，请绑定账户真实姓名本人的银行卡</p>
+        <p>确认为了保证账户资金安全，请绑定账户真实姓名本人的银行卡</p>
         <van-button type="default" class="p-button-s" @click.stop="showInfo=false">确认</van-button>
       </div>
     </van-popup>
@@ -80,10 +80,11 @@ export default {
       this.$router.go(-1);
     },
     async addBankCard() {
-        let params = {
-            
-        }
-      await addBankCard().then(res => {
+      let params = {
+        cardNo: "222222222",
+        name: "测试"
+      };
+      await addBankCard(params).then(res => {
         console.log(res);
       });
     },
@@ -94,6 +95,7 @@ export default {
     },
     next() {
       this.show = true;
+      this.addBankCard()
     },
     showInfoP() {
       this.showInfo = true;

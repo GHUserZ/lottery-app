@@ -34,10 +34,9 @@
         <div class="title-box">
           <h2 class="c-title">
             热门彩种
-            <a href="javascript:;" class="more">
-              更多
-              <van-icon class="arrow" name="arrow" />
-            </a>
+            <router-link :to="{path:'/',query:{ 'tab': 2 }}" class="more">
+              更多<van-icon class="arrow" name="arrow" />
+            </router-link>
           </h2>
         </div>
         <van-skeleton title avatar :row="3" :loading="loading">
@@ -92,7 +91,7 @@ export default {
       loading:true,
       navData: [
         { src: payImg, txt: "立即充值", url: "pay" },
-        { src: withdrawImg, txt: "快速提现" },
+        { src: withdrawImg, txt: "快速提现",url:"withdraw" },
         { src: gameImg, txt: "快速游戏" ,url:'game'},
         { src: serviceImg, txt: "联系客服" }
       ],
@@ -147,6 +146,9 @@ export default {
           break
         case 'game':
           this.$router.push({path:'/',query:{ 'tab': 2 }})
+          break
+        case 'withdraw':
+          this.$router.push({path:'/meWithdraw'})
           break
       }
     }

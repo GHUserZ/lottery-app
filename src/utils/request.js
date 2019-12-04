@@ -6,7 +6,7 @@ import router from "@/router"
 // create an axios instance
 const service = axios.create({
   baseURL:process.env.VUE_APP_API, // url = base url + request url
-  timeout: 5000, // request timeout
+  timeout: 50000, // request timeout
   withCredentials: true,
   // 默认等待请求头格式
   headers: {
